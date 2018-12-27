@@ -89,19 +89,18 @@ if __name__ == '__main__':
     else:
         df = pd.DataFrame()
 
-    for k in range(0, num_of_movies - len(df), 15):
-    #for k in range(0, 15, 15):
-        html = getHTMLText(url, k)
-        if num_of_movies - len(df) > 15:
-            n = 15
-        else:
-            n = num_of_movies - len(df)
-        updateData(html, n)
-        print(k)
-
-    col_list = ['mid', 'name', 'release_year', 'country', 'type', 'myRate', 'myTag', 'href']
-    df = df.loc[:, col_list]
-    #print(df)
-
     if num_of_movies - len(df):
+        for k in range(0, num_of_movies - len(df), 15):
+        #for k in range(0, 15, 15):
+            html = getHTMLText(url, k)
+            if num_of_movies - len(df) > 15:
+                n = 15
+            else:
+                n = num_of_movies - len(df)
+            updateData(html, n)
+            print(k)
+
+        col_list = ['mid', 'name', 'release_year', 'country', 'type', 'myRate', 'myTag', 'href']
+        df = df.loc[:, col_list]
+
         df.to_excel(data_name, index=False)
