@@ -102,5 +102,6 @@ if __name__ == '__main__':
 
         col_list = ['mid', 'name', 'release_year', 'country', 'type', 'myRate', 'myTag', 'href']
         df = df.loc[:, col_list]
+        df = df.sort_values(by='name')
 
         df.to_excel(data_name, index=False)
